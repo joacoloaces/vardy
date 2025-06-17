@@ -1,55 +1,43 @@
-# ⚽ Expected Goals (xG) Model with StatsBomb Data
+# ⚽ Analysing Jamie Vardy’s 2015–16 Leicester City Season
 
-This project explores the development of an Expected Goals (xG) model using open event data provided by [StatsBomb](https://statsbomb.com/). The goal is to estimate the probability of a shot resulting in a goal based on multiple contextual and spatial features.
+This project is a data-driven analysis of Jamie Vardy’s remarkable 2015–16 Premier League season with Leicester City, using event data from StatsBomb. The aim is to uncover performance trends, goal-scoring patterns, and key factors behind his historic goal surge.
 
-## 🔍 Objective
+## 🧩 Project Overview
 
-Build a logistic regression model that predicts the probability of scoring for every shot taken in a match, considering factors like:
+- **Player**: Jamie Vardy  
+- **Season**: 2015–16  
+- **Team**: Leicester City (Premier League Champions)  
+- **Focus**: Shot efficiency, goal timing, movement, and contextual features influencing Vardy’s goals during that season.
 
-- Shot location (x, y coordinates)
-- Shot type (e.g., open play, set piece)
-- Body part used
-- Pressure from defenders
-- Shot angle and distance
+## 🔍 Objectives
 
-## 📊 Data
+1. Quantify Vardy’s goal-scoring efficiency and how it compared within Leicester and across the Premier League.
+2. Analyze spatial and contextual shot features (e.g., distance, angle, build-up context).
+3. Detect patterns such as high-scoring streaks and underappreciated goal types.
+4. Perform a time series analysis of his goals over the season.
+5. Derive actionable insights into the playing style that drove Leicester's title-winning campaign.
 
-The data comes from StatsBomb's publicly available datasets, accessed using the [`statsbombpy`](https://github.com/statsbomb/statsbombpy) Python package. The main dataset used includes shot-level event data from multiple matches.
+## 📊 Data & Tools
+
+- **Data source**: StatsBomb event data (Premier League 2015–16) via `statsbombpy`.
+- **Key events**: shots, carries, passes, positional data tied to Vardy.
+- **Python libraries**: pandas, numpy, matplotlib/seaborn, scikit-learn, statsbombpy.
 
 ## 🧠 Methodology
 
-1. **Data Collection**  
-   Downloaded and combined event-level data for several matches.
+1. **Data Extraction**  
+   - Pulled all match events involving Leicester.
+   - Filtered to Vardy’s shots (filtered by player name/ID).
 
 2. **Feature Engineering**  
-   Created custom variables such as:
-   - Shot angle and distance to goal
-   - Game state (winning/losing/drawing)
-   - Shot pressure
-   - Goalkeeper position (if available)
+   - Computed shot angle & distance to goal.
+   - Included contextual flags: open play, counter-attack, press intensity.
 
-3. **Modeling**  
-   Trained a **logistic regression model** using scikit-learn to estimate xG values for each shot.
-
-4. **Evaluation**  
-   - Used AUC-ROC and Brier Score to evaluate model performance.
-   - Visualized xG distribution, calibration curves, and residuals.
-
-5. **Insights**  
-   - Identified which features are most predictive.
-   - Highlighted players and teams that over/under-perform their xG.
-
-## 📎 Dependencies
-
-- Python 3.8+
-- pandas
-- numpy
-- matplotlib / seaborn
-- scikit-learn
-- statsbombpy
-- shap (optional, for feature importance)
-
-Install them using:
-
-```bash
-pip install -r requirements.txt
+3. **Shot Performance Analysis**  
+   - Shot map visualization across matches.
+   - Distribution of shot distances, angles.
+   - Time-based exploration (e.g., streaks of scoring games).
+  
+4. **Pressure Performance Analysis**  
+   - Pressure map visualization across matches.
+   - Influence in ball recovery
